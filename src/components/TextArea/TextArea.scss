@@ -1,0 +1,14 @@
+.ta {
+  &__input {
+    resize: none;
+    width: 100%;
+    outline: none;
+    border: 1px solid #d3d3d3;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    height: 168px;
+    font-family: "open sans", sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 10px;
+  }
+}

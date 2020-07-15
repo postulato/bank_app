@@ -1,0 +1,40 @@
+.rw-content {
+  &__load {
+    display: block;
+    padding-left: 25px;
+  }
+
+  &__input {
+    z-index: -1;
+    position: absolute;
+    opacity: 0;
+  }
+
+  &__text {
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 17px;
+    color: #00b79a;
+    padding-bottom: 3px;
+    border-bottom: 1px dashed #00b79a;
+    position: relative;
+  }
+
+  &__text::after {
+    display: block;
+    content: "";
+    width: 1px;
+    background: #d3d3d3;
+    height: 14px;
+    position: absolute;
+    right: -12px;
+    top: 2px;
+  }
+
+  &__title {
+    font-size: 14px;
+    line-height: 17px;
+    color: #333333;
+    margin-left: 22px;
+  }
+}

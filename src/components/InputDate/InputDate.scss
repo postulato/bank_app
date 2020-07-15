@@ -1,0 +1,26 @@
+// .input-date-wrapper {
+// }
+
+.input-date {
+  height: 28px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  line-height: 17px;
+  width: 96px;
+  padding: 5px 0 5px 10px;
+  border: 1px solid #d3d3d3;
+  outline: none;
+  position: relative;
+
+  &--fullwidth {
+    width: 100%;
+  }
+
+  & + img {
+    vertical-align: middle;
+    margin-left: 8px;
+  }
+  // &::-webkit-calendar-picker-indicator {
+  //   display: none;
+  // }
+}

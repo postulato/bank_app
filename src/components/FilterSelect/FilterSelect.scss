@@ -1,0 +1,88 @@
+@import "../../css-utils/fashionScroll.scss";
+
+.active {
+  display: block !important;
+}
+
+.sf-container {
+  width: 196px;
+  position: relative;
+
+  &__input {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d3d3d3;
+    border-right: none;
+    outline: none;
+    font-size: 14px;
+    line-height: 18px;
+    color: #333333;
+    padding: 5px 10px;
+    height: 28px;
+
+    &:disabled {
+      box-shadow: none;
+      background-color: #e4e4e4;
+    }
+
+    &::selection {
+      background: #19cbac;
+      color: #fff;
+    }
+  }
+
+  &__arrow-holder {
+    background-color: #f0f0f0;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 28px;
+    display: inline-block;
+    border: 1px solid #d3d3d3;
+    height: 28px;
+
+    &:hover {
+      background-color: #e4e4e4;
+    }
+
+    &::after {
+      height: 0;
+      width: 0;
+      border: 4px solid #666;
+      border-left: 4px solid transparent;
+      border-top: 4px solid transparent;
+      position: absolute;
+      left: 10px;
+      top: 7px;
+
+      content: "";
+      display: block;
+      transform: rotate(45deg);
+    }
+  }
+
+  &__items {
+    display: none;
+    z-index: 10;
+    position: absolute;
+    top: 27px;
+    border: 1px solid #d3d3d3;
+    left: 0;
+    width: 100%;
+    max-height: 216px;
+    overflow-y: scroll;
+    background: #fff;
+  }
+
+  &__item {
+    font-size: 14px;
+    line-height: 17px;
+    color: #333333;
+    padding: 5px 10px;
+    cursor: pointer;
+
+    &:hover {
+      background: #eaeaea;
+    }
+  }
+}

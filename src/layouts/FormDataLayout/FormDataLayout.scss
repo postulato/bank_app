@@ -1,0 +1,163 @@
+@import "../../css-utils/fashionScroll.scss";
+
+.chat {
+  background: gray;
+  height: 100%;
+  display: inline-block;
+}
+
+.process-wrapper {
+  display: flex;
+  height: 100%;
+  margin: 35px 80px;
+}
+
+.process {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 886px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  &__data-wrapper {
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    line-height: 50px;
+    font-family: "open sans", sans-serif;
+    font-size: 42px;
+    color: #333;
+    font-weight: 200;
+    padding: 40px 50px 38px;
+  }
+
+  &__cards {
+    padding: 0 32px;
+    display: flex;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  &__card {
+    padding: 0 20px 18px;
+    font-size: 18px;
+    line-height: 22px;
+    color: #a6a6a6;
+    position: relative;
+
+    &--active {
+      color: #19cbac;
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 4px;
+        width: 100%;
+        left: 0;
+        bottom: -2px;
+        background-color: #19cbac;
+      }
+    }
+  }
+
+  &__main {
+    flex: 1 1 280px;
+    overflow-y: scroll;
+    margin: 5px;
+  }
+
+  &__footer {
+    flex-basis: 80px;
+    border-top: 2px solid #f0f0f0;
+    padding: 15px 0 13px 325px;
+  }
+}
+
+.form {
+  padding: 28px 134px 28px 48px;
+
+  &__header {
+    font-size: 11px;
+    line-height: 13px;
+    margin-bottom: 26px;
+  }
+
+  &__error {
+    left: 270px;
+    top: -15px;
+    position: absolute;
+    font-size: 11px;
+    line-height: 13px;
+    color: #ff5631;
+    display: block;
+  }
+
+  &__main {
+  }
+
+  &__field {
+    display: flex;
+    margin-bottom: 23px;
+    align-items: center;
+    position: relative;
+
+    &:nth-child(10) > .form__label {
+      align-self: flex-start;
+    }
+  }
+
+  &__label {
+    flex: 0 1 270px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  &__input {
+    flex: 1 1 200px;
+  }
+}
+
+.tip-wrapper {
+  position: absolute;
+  width: 85px;
+  right: -95px;
+  top: 5px;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.tip {
+  &__default {
+    color: #a6a6a6;
+  }
+  &__lnk {
+    font-size: 11px;
+    line-height: 13px;
+    color: #19cbac;
+    text-decoration: underline dashed #19cbac;
+  }
+}
+
+/* <div class="process">
+          <div class="process__header">Типовая форма</div>
+          <div class="process__data-wrapper">
+            <div class="process__cards">
+              <div class="process__card--active">
+                Личные данные
+              </div>
+              <div class="process__card">
+                Данные кредитной карты
+              </div>
+              <div class="process__card">
+                Результат
+              </div>
+            </div>
+            <div class="process__main fashion-scroll"></div>
+            <div class="process__footer"></div>
+          </div>
+        </div>
+        <div class="chat"></div> */

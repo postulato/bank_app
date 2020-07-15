@@ -1,0 +1,34 @@
+.ef {
+  position: relative;
+
+  &__input {
+    width: 100%;
+    font-size: 14px;
+    line-height: 16px;
+    height: 28px;
+    border: 1px solid #d3d3d3;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 4px 10px;
+    outline: none;
+
+    &--error-state {
+      @extend .ef__input;
+      border-color: #ff3000;
+
+      & + .ef__error {
+        display: block;
+      }
+    }
+  }
+
+  &__error {
+    // DELETE THIS!
+    left: 0;
+    top: -15px;
+    position: absolute;
+    font-size: 11px;
+    line-height: 13px;
+    color: #ff5631;
+    display: none;
+  }
+}

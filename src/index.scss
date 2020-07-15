@@ -1,0 +1,128 @@
+// @import "./comopnents/FieldWithError/FieldWithError.scss";
+// @import "./comopnents/Calendar/Calendar.scss";
+
+// ---------------------------------------------------------------
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "open sans", sans-serif;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.site-header {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  border-bottom: 2px solid #19cbac;
+}
+
+.site-header__title {
+  color: #fff;
+  padding: 22px 74px 25px 78px;
+  background-image: linear-gradient(
+    120deg,
+    rgba(25, 203, 172, 1) 88%,
+    rgba(2, 0, 36, 0) 88%
+  );
+  font-size: 28px;
+  line-height: 33px;
+  font-weight: 700;
+}
+
+.site-header__title-wrapper {
+  background-color: #19cbac;
+}
+
+.site-header__title span {
+  transform: skewX(28deg);
+  display: block;
+}
+
+.site-header__nav {
+  list-style-type: none;
+  padding-top: 5px;
+  margin: 0 -15px;
+  display: flex;
+  align-items: center;
+}
+
+.site-header__nav-item {
+  background-clip: padding-box;
+  font-size: 18px;
+  line-height: 22px;
+  color: #666;
+  font-weight: normal;
+  margin: 3px;
+  padding: 5px 16px 5px 18px;
+  transform: skewX(-31deg);
+
+  & a {
+    color: #666;
+    display: block;
+    text-decoration: none;
+    transform: skewX(31deg);
+  }
+
+  & a:hover {
+    color: #00b79a;
+  }
+
+  &--active {
+    @extend .site-header__nav-item;
+    background-color: #19cbac;
+
+    & a {
+      color: #fff;
+    }
+  }
+}
+
+.site-main {
+  // min-height: 100%;
+  height: 100%;
+  padding: 80px 0 148px;
+}
+
+.site-footer {
+  padding: 28px 80px;
+  border-top: 1px solid #a6a6a6;
+  display: flex;
+  height: 75px;
+  margin-top: -75px;
+}
+
+.site-footer__link {
+  color: #a6a6a6;
+  text-decoration: none;
+  line-height: 17px;
+  font-size: 14px;
+  margin-right: 25px;
+  font-weight: normal;
+}
+
+.site-footer__link:first-child {
+  margin-right: 46px;
+}
+
+.site-footer__link:last-child {
+  margin-right: 0;
+}
+
+.site-footer__link:last-child {
+  margin-left: auto;
+}
