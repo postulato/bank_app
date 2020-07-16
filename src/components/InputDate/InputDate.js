@@ -1,7 +1,7 @@
 import Component from "../Component.js";
 import calendarIcon from "./assets/clndr-1.png";
 import "./InputDate.scss";
-
+// !! TRY ADD MASK HERE!!
 function constructSelf(data, cb) {
   function checkValue(str, max) {
     if (str.charAt(0) !== "0" || str == "00") {

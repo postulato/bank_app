@@ -18,11 +18,9 @@ class GlobalStore {
     // this.state.currentView = this.state.formDataState;
     this.state.currentView = this.state.rwState;
     this.state.currentView.render();
-    this.state.currentView.render("form"); //!! DELETE THIS
   }
 
   inform(action) {
-    console.log("GLOBALSTORE INFORMED", action);
     switch (action.status) {
       case "personal":
         if (this.state.currentView instanceof RegistrationWayLayout) {
@@ -33,19 +31,18 @@ class GlobalStore {
         }
         break;
       case "list":
-        Router.navigateTo("data");
-        if (this.state.currentView instanceof RegistrationWayLayout) {
-          this.state.previousView = this.state.currentView;
-          this.state.currentView.unmount();
-          this.state.currentView = this.state.formDataState;
-          this.state.currentView.render();
-        }
         break;
       case "BACKED":
         console.warn(this.state.currentView);
         this.state.currentView.unmount();
         this.state.currentView = this.state.previousView;
         this.state.currentView.render();
+        break;
+      case "card":
+      case "result":
+        if (this.state.currentView instanceof FormDataLayout) {
+          this.state.currentView.render(action.status);
+        }
         break;
     }
   }

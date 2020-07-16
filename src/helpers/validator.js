@@ -12,6 +12,8 @@ function isValidDate(prop) {
   const arr = prop.value.split("/");
   if (+arr[0] > 31 && +arr[1] > 12) {
     prop.error = "Введите правильную дату";
+  } else if (prop.value.length < 10) {
+    prop.error = "Введите дату в формате дд.мм.гггг";
   }
 }
 function isValidList(prop) {
@@ -29,11 +31,36 @@ function isValidMail(prop) {
   }
 }
 
+function isValidCard(prop) {
+  if (prop.value.length !== 19) {
+    prop.error = "Введите корректный номер карты";
+  }
+}
+
+function isValidDateShort(prop) {
+  console.log(prop);
+  if (prop.value.length < 5) {
+    prop.error = "Введите корректную дату";
+  }
+}
+
+function isValidCVC(prop) {
+  if (prop.value.length < 3) {
+    prop.error = "Введите корректный CVC";
+  }
+}
+
 export default function validator(state) {
+  const gender = state.data.gender && state.data.gender.value;
   for (let propName in state.data) {
     let prop = state.data[propName];
     prop.error = null;
-    isNotEmpty(prop);
+    if (
+      (prop.mark === "male" && gender === "Женский") ||
+      (prop.mark === "female" && gender === "Мужской")
+    )
+      continue;
+
     switch (prop.type) {
       case "mail":
         isValidMail(prop);
@@ -47,7 +74,17 @@ export default function validator(state) {
       case "tel":
         isValidPhoneNumber(prop);
         break;
+      case "number":
+        isValidCard(prop);
+        break;
+      case "number-short":
+        isValidCVC(prop);
+        break;
+      case "date-short":
+        isValidDateShort(prop);
+        break;
     }
+    isNotEmpty(prop);
   }
   return state;
 }

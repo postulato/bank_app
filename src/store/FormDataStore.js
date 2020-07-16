@@ -1,3 +1,5 @@
+import GlobalStore from "./GlobalStore";
+
 class FormDataStore {
   constructor(status) {
     this.status = status; // DONT FORGET TO CHANGE! must be: form | card | result
@@ -107,7 +109,6 @@ class FormDataStore {
           name: "friendEmail",
           type: "mail",
           isValid: false,
-          instance: null,
         },
         bfTel: {
           label: "Номер телефона твоего парня:",
@@ -120,7 +121,6 @@ class FormDataStore {
           mark: "female",
           type: "tel",
           isValid: false,
-          instance: null,
         },
         favPen: {
           label: "Какую сковороду предпочитаешь:",
@@ -129,7 +129,6 @@ class FormDataStore {
           type: "list",
           value: "",
           options: ["Tefal", "Samsung", "Rowenta"],
-          instance: null,
         },
         gfTel: {
           label: "Номер телефона своей девушки:",
@@ -141,7 +140,6 @@ class FormDataStore {
             type: "default",
           },
           value: "",
-          instance: null,
         },
         fbTeam: {
           label: "Любимая футбольная команда:",
@@ -159,28 +157,37 @@ class FormDataStore {
       data: {
         cardNumber: {
           label: "Номер карты:",
+          name: "cardNumber",
           type: "number",
           isValid: "",
           value: "",
-          instance: null,
+          error: null,
         },
         cardDate: {
           label: "Месяц/год:",
+          name: "cardDate",
           value: "",
-          type: "date-simple", // alrdy have that comopnent , should change this
-          instance: null,
+          type: "date-short", // alrdy have that comopnent , should change this
+          error: null,
         },
         cardCVC: {
           label: "CVC2 или CVV2:",
           type: "number-short",
+          name: "cardCVC",
+          tip: {
+            text: "3 цифры",
+            type: "default",
+          },
           value: "",
-          instance: null,
+          error: null,
         },
         cardType: {
           label: "Тип карты:",
           type: "radio",
+          name: "cardType",
+          value: "Дебетовая",
           options: ["Дебетовая", "Кредитная"],
-          instance: null,
+          error: null,
         },
       },
     };
@@ -191,19 +198,28 @@ class FormDataStore {
   inform(el, ev) {
     // CLEAR INSTANCES ON UNMOUNT!
     // HERE INFORM ON INPUTS DO SMTH
+
     if (el.name === "btn-global") {
       this.broadcast({ type: "VALIDATE", payload: this[this.status] });
       return;
     }
+
     if (ev !== undefined) {
       this[this.status]["data"][el.name]["value"] = ev.target.value;
-    }
-    if (el.name === "CAN_PROCEED") {
-      console.log("can proceed");
     }
     if (el.name === "gender") {
       this.gender = ev.target.value === "Мужской" ? "male" : "female";
       this.broadcast({ type: "RERENDER", payload: this.status });
+      return;
+    }
+    if (el.name === "CAN_PROCEED") {
+      if (this.status === "form" && this.form.isValid) {
+        this.status = "card";
+        GlobalStore.inform({ status: this.status });
+      } else if (this.status === "card" && this.card.isValid) {
+        this.status = "result";
+        GlobalStore.inform({ status: this.status });
+      }
     }
   }
 

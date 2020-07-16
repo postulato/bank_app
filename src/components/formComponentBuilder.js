@@ -9,6 +9,7 @@ import RadioWithLabel from "./RadioWithLabel/RadioWithLabel";
 import FilterSelect from "./FilterSelect/FilterSelect";
 import TextArea from "./TextArea/TextArea.js";
 import PhoneNumber from "./PhoneNumber/PhoneNumber.js";
+import FieldNumber from "./FieldNumber/FieldNumber.js";
 
 // TODO: компонент билдер должен добавлять брать данные из формдатыстора для того чтобы назначать их в инпуты
 export default function componentBuilder(data) {
@@ -57,6 +58,7 @@ export default function componentBuilder(data) {
       textEl.onChange.subscribe(informDataStore);
       break;
     case "date":
+    case "date-short":
       const dateEl = new InputDate(inputWrapper, data);
       dateEl.onChange.subscribe(informDataStore);
       break;
@@ -87,6 +89,11 @@ export default function componentBuilder(data) {
     case "tel":
       const phoneEl = new PhoneNumber(inputWrapper, data);
       phoneEl.onChange.subscribe(informDataStore);
+      break;
+    case "number":
+    case "number-short":
+      const numberEl = new FieldNumber(inputWrapper, data);
+      numberEl.onChange.subscribe(informDataStore);
       break;
   }
   return wrapper;

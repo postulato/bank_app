@@ -1,7 +1,7 @@
 import belFlag from "../../assets/bel-flag.png";
 import worldFlag from "../../assets/world-flag.png";
 import Component from "../Component.js";
-import imask from "imask";
+import mask from "../../helpers/mask.js";
 import "./PhoneNumber.scss";
 
 function img(type) {
@@ -9,14 +9,6 @@ function img(type) {
   image.classList.add("pn__flag-img");
   image.src = type === "bel" ? belFlag : worldFlag;
   return image;
-}
-
-function mask(el) {
-  const maskOptions = {
-    mask: "+000 00 000-00-00",
-  };
-
-  imask(el, maskOptions);
 }
 
 function checkFlag(el, flagKeeper) {
@@ -59,7 +51,7 @@ function constructSelf(data, cb) {
   input.addEventListener("keyup", (e) => {
     checkFlag(e.target, flagHolder);
   });
-  mask(input);
+  mask(input, "+000 00 000-00-00");
 
   wrapper.append(input);
 

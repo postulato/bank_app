@@ -34,6 +34,7 @@ module.exports = {
           outputPath: "dist/images",
         },
       },
+
     ],
   },
   plugins: [

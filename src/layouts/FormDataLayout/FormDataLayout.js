@@ -14,7 +14,7 @@ function constructSelf() {
     <div class="process__header">Типовая форма</div>
     <div class="process__data-wrapper">
       <div class="process__cards">
-        <div class="process__card--active process__card">
+        <div class="process__card process__card--active">
           Личные данные
         </div>
         <div class="process__card">
@@ -30,6 +30,7 @@ function constructSelf() {
     </div>
   </div>`;
   wrapper.insertAdjacentHTML("afterbegin", template);
+
   const globalBtn = new Button(
     wrapper.getElementsByClassName("process__footer")[0],
     "Далее"
@@ -59,7 +60,11 @@ function constructFormData(type) {
       );
     }
   } else if (type === "card") {
-    wrapper.append("this is card");
+    for (let inputName in FormDataStore[type]["data"]) {
+      formMain.append(
+        formComopnentBuilder(FormDataStore[type]["data"][inputName])
+      );
+    }
   } else if (type === "result") {
     wrapper.append("this is result");
   }
@@ -94,6 +99,23 @@ class FormDataLayout {
    * @param {string} type data | card | result | undefined
    */
   render(type = "form") {
+    this.self
+      .getElementsByClassName("process__card--active")[0]
+      .classList.remove("process__card--active");
+    if (type === "form") {
+      this.self
+        .getElementsByClassName("process__card")[0]
+        .classList.add("process__card--active");
+    } else if (type === "card") {
+      this.self
+        .getElementsByClassName("process__card")[1]
+        .classList.add("process__card--active");
+    } else {
+      this.self
+        .getElementsByClassName("process__card")[2]
+        .classList.add("process__card--active");
+    }
+
     if (!this.self.parentNode) {
       this.anchor.append(this.self);
     }
@@ -113,10 +135,11 @@ class FormDataLayout {
 
   attachErrors() {
     const data = FormDataStore.getState().data;
-    const elems = [
-      ...Array.from(this.self.getElementsByTagName("input")),
-      this.self.getElementsByTagName("textarea")[0],
-    ];
+
+    const elems = [...Array.from(this.self.getElementsByTagName("input"))];
+    if (FormDataStore.status === "form") {
+      elems.push(this.self.getElementsByTagName("textarea")[0]);
+    }
     elems.forEach((el) => {
       if (
         data[el.name].error &&

@@ -1,16 +1,13 @@
-{
-  {
-    /* 
-  
-  <label class='rw-content__load'>
-    <input type="file" class='rw-content__input' required />
-    <span class='rw-content__text'>Загрузить список</span>
-    <div class='rw-content__title' ></div>
-  </label>
-  
- */
-  }
-}
+// var file = document.getElementById("myFile").files[0];
+// var reader = new FileReader();
+// reader.onload = function(fileLoadEvent) {
+//  // file contents are available in reader.result
+//   var stream = reader.result; // saving file contents in stream variable
+
+// };
+// reader.readAsBinaryString(file);
+
+// 160
 
 import "./FileLoad.scss";
 
