@@ -1,14 +1,14 @@
-function isNotEmpty(prop) {
+export function isNotEmpty(prop) {
   if (prop.value.length === 0) {
     prop.error = "Заполните это поле";
   }
 }
-function isValidPhoneNumber(prop) {
+export function isValidPhoneNumber(prop) {
   if (prop.value.length !== 17) {
     prop.error = "Введите правильный номер";
   }
 }
-function isValidDate(prop) {
+export function isValidDate(prop) {
   const arr = prop.value.split("/");
   if (+arr[0] > 31 && +arr[1] > 12) {
     prop.error = "Введите правильную дату";
@@ -16,12 +16,12 @@ function isValidDate(prop) {
     prop.error = "Введите дату в формате дд.мм.гггг";
   }
 }
-function isValidList(prop) {
+export function isValidList(prop) {
   if (!prop.options.some((str) => str === prop.value)) {
     prop.error = "Выберите вариант, который есть в списке";
   }
 }
-function isValidMail(prop) {
+export function isValidMail(prop) {
   if (
     !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
       prop.value
@@ -31,20 +31,20 @@ function isValidMail(prop) {
   }
 }
 
-function isValidCard(prop) {
+export function isValidCard(prop) {
   if (prop.value.length !== 19) {
     prop.error = "Введите корректный номер карты";
   }
 }
 
-function isValidDateShort(prop) {
+export function isValidDateShort(prop) {
   console.log(prop);
   if (prop.value.length < 5) {
     prop.error = "Введите корректную дату";
   }
 }
 
-function isValidCVC(prop) {
+export function isValidCVC(prop) {
   if (prop.value.length < 3) {
     prop.error = "Введите корректный CVC";
   }
