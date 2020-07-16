@@ -31,7 +31,7 @@ import {assert, expect} from 'chai';
         funcs.isValidMail(result);
         expect(result.error).not.to.equal(null);
       })
-      it('When passing ${mail} error should be a string', function () {
+      it(`When passing ${mail} error should be a string`, function () {
         funcs.isValidMail(result);
         assert.isString(result.error);
       })
